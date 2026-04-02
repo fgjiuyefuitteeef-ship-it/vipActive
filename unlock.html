@@ -1,0 +1,8 @@
+<script>
+document.cookie = "vip_access=true; max-age=120; path=/";
+
+// Android ID ke saath redirect
+let id = new URLSearchParams(location.search).get("id");
+
+window.location.href = "index.html?id=" + id;
+</script>
