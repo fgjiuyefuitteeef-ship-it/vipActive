@@ -1,8 +1,11 @@
 <script>
+let params = new URLSearchParams(location.search);
+let id = params.get("id");
+let token = params.get("token");
+
+// Cookie set (short time)
 document.cookie = "vip_access=true; max-age=120; path=/";
 
-// Android ID ke saath redirect
-let id = new URLSearchParams(location.search).get("id");
-
-window.location.href = "index.html?id=" + id;
+// Redirect to main page
+window.location.href = "index.html?id=" + id + "&token=" + token;
 </script>
