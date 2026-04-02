@@ -2,87 +2,74 @@
 <html>
 <head>
 <title>VIP Unlock</title>
-
 <style>
-body {
-    background: #0f172a;
-    color: white;
-    text-align: center;
-    font-family: Arial;
-}
-
-#locked {
-    display: block;
-}
-
-#unlocked {
-    display: none;
-}
-
-.box {
-    margin-top: 100px;
-}
+body { background:#111; color:white; text-align:center; }
+#locked { display:block; }
+#unlocked { display:none; }
 </style>
-
 </head>
+
 <body>
 
-<div class="box">
-
-<!-- Locked -->
 <div id="locked">
-    <h2>🔒 Section Locked</h2>
-    <p>Please complete the process to unlock</p>
+<h2>🔒 Locked</h2>
 </div>
 
-<!-- Unlocked -->
 <div id="unlocked">
-    <h2>🎉 VIP PASS</h2>
-    <h1 id="pass">Loading...</h1>
+<h2>🎉 VIP PASS</h2>
+<h1 id="pass">Loading...</h1>
 </div>
 
-</div>
-
-<!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase.js"></script>
 
 <script>
-
-// 🔥 Firebase Config (Apna daalna)
 var firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  databaseURL: "YOUR_DATABASE_URL"
+  apiKey: "YOUR_KEY",
+  databaseURL: "YOUR_DB_URL"
 };
 
 firebase.initializeApp(firebaseConfig);
 
-// 🔥 URL se Android ID lena
-let params = new URLSearchParams(window.location.search);
+let params = new URLSearchParams(location.search);
 let id = params.get("id");
+let token = params.get("token");
 
-// 🔥 Cookie check
-if(document.cookie.includes("vip_access=true") && id != null) {
-
-    // Unlock UI
-    document.getElementById("locked").style.display = "none";
-    document.getElementById("unlocked").style.display = "block";
-
-    // Firebase se pass fetch
-    firebase.database().ref("videoPass/" + id + "/pass").once("value")
-    .then(snapshot => {
-        let pass = snapshot.val();
-
-        if(pass != null) {
-            document.getElementById("pass").innerText = pass;
-        } else {
-            document.getElementById("pass").innerText = "No Pass Found ❌";
-        }
-    });
-
-} else {
-    // Locked hi rahega
+// ❌ Direct access block
+if(document.referrer === "") {
+    document.body.innerHTML = "❌ Access Denied";
 }
 
+// Cookie check
+if(document.cookie.includes("vip_access=true")) {
+
+    firebase.database().ref("videoPass/" + id).once("value")
+    .then(snap => {
+
+        let data = snap.val();
+
+        if(data != null) {
+
+            let now = Date.now()/1000;
+
+            if(data.token == token && now < data.expiry) {
+
+                // Unlock
+                document.getElementById("locked").style.display = "none";
+                document.getElementById("unlocked").style.display = "block";
+
+                document.getElementById("pass").innerText = data.pass;
+
+            } else {
+                document.body.innerHTML = "❌ Invalid / Expired";
+            }
+
+        } else {
+            document.body.innerHTML = "❌ No Data";
+        }
+
+    });
+
+}
 </script>
 
 </body>
