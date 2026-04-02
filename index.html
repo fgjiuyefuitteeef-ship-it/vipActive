@@ -1,83 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VIP Activated!</title>
+<title>VIP Unlock</title>
+
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+body {
+    background: #0f172a;
+    color: white;
+    text-align: center;
+    font-family: Arial;
+}
 
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Poppins', sans-serif;
-        background: linear-gradient(135deg, #ff7e5f, #feb47b);
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+#locked {
+    display: block;
+}
 
-    .vip-card {
-        background: #fff;
-        border-radius: 20px;
-        padding: 40px;
-        text-align: center;
-        width: 90%;
-        max-width: 400px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        animation: pop 0.5s ease-out forwards;
-    }
+#unlocked {
+    display: none;
+}
 
-    @keyframes pop {
-        0% { transform: scale(0.5); opacity: 0; }
-        100% { transform: scale(1); opacity: 1; }
-    }
-
-    .vip-card h1 {
-        color: #f39c12;
-        font-size: 28px;
-        margin-bottom: 10px;
-    }
-
-    .vip-card p {
-        color: #333;
-        font-size: 18px;
-        margin-bottom: 20px;
-    }
-
-    .vip-card .icon {
-        font-size: 50px;
-        color: #f39c12;
-        margin-bottom: 20px;
-    }
-
-    .vip-card button {
-        background: linear-gradient(90deg, #f39c12, #e67e22);
-        border: none;
-        padding: 12px 25px;
-        border-radius: 50px;
-        color: #fff;
-        font-weight: 600;
-        cursor: pointer;
-        font-size: 16px;
-        transition: 0.3s;
-    }
-
-    .vip-card button:hover {
-        transform: scale(1.05);
-        background: linear-gradient(90deg, #e67e22, #f39c12);
-    }
+.box {
+    margin-top: 100px;
+}
 </style>
+
 </head>
 <body>
 
-<div class="vip-card">
-    <div class="icon">🎉</div>
-    <h1>Congratulations!</h1>
-    <p>Your VIP is now <strong>Active for 24 Hours</strong></p>
-    <button onclick="alert('Enjoy your VIP access!')">Enjoy VIP</button>
+<div class="box">
+
+<!-- Locked -->
+<div id="locked">
+    <h2>🔒 Section Locked</h2>
+    <p>Please complete the process to unlock</p>
 </div>
+
+<!-- Unlocked -->
+<div id="unlocked">
+    <h2>🎉 VIP PASS</h2>
+    <h1 id="pass">Loading...</h1>
+</div>
+
+</div>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase.js"></script>
+
+<script>
+
+// 🔥 Firebase Config (Apna daalna)
+var firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  databaseURL: "YOUR_DATABASE_URL"
+};
+
+firebase.initializeApp(firebaseConfig);
+
+// 🔥 URL se Android ID lena
+let params = new URLSearchParams(window.location.search);
+let id = params.get("id");
+
+// 🔥 Cookie check
+if(document.cookie.includes("vip_access=true") && id != null) {
+
+    // Unlock UI
+    document.getElementById("locked").style.display = "none";
+    document.getElementById("unlocked").style.display = "block";
+
+    // Firebase se pass fetch
+    firebase.database().ref("videoPass/" + id + "/pass").once("value")
+    .then(snapshot => {
+        let pass = snapshot.val();
+
+        if(pass != null) {
+            document.getElementById("pass").innerText = pass;
+        } else {
+            document.getElementById("pass").innerText = "No Pass Found ❌";
+        }
+    });
+
+} else {
+    // Locked hi rahega
+}
+
+</script>
 
 </body>
 </html>
