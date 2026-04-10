@@ -8,144 +8,195 @@
 body{
     margin:0;
     font-family:sans-serif;
-    background: linear-gradient(135deg,#0f172a,#1e293b);
+    background:#0f172a;
     color:white;
+}
+
+.header{
     text-align:center;
-}
-
-.container{
     padding:20px;
-}
-
-.card{
-    background:#1e293b;
-    margin:15px;
-    padding:15px;
-    border-radius:15px;
-    box-shadow:0 0 10px rgba(0,0,0,0.5);
-}
-
-button{
-    padding:15px 30px;
-    border:none;
-    border-radius:10px;
-    background:#22c55e;
-    color:white;
-    font-size:16px;
-    margin-top:20px;
+    font-size:20px;
 }
 
 #adArea{
-    height:400px;
+    height:70vh;
     overflow-y:scroll;
+    padding:10px;
+}
+
+.adbox{
+    margin:15px 0;
+    display:flex;
+    justify-content:center;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    font-size:18px;
+    border:none;
+    background:#22c55e;
+    color:white;
+    display:none;
+}
+
+#popup{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#000000cc;
+    display:none;
+    justify-content:center;
+    align-items:center;
+}
+
+.popupBox{
+    background:#1e293b;
+    padding:20px;
+    border-radius:10px;
+    text-align:center;
 }
 </style>
 
 <script>
-let page = 1;
+let page=1;
+let scrolled=false;
 
-function nextPage(){
-    page++;
+// 🔒 Fake Adblock check
+function detectAdBlock(){
+    let ad = document.createElement("div");
+    ad.innerHTML="&nbsp;";
+    ad.className="adsbox";
+    document.body.appendChild(ad);
 
-    document.getElementById("title").innerText="Step "+page+" / 5";
-
-    if(page==5){
-        document.getElementById("btn").innerText="🎁 Claim Reward";
-    }
-
-    startTimer();
+    setTimeout(()=>{
+        if(ad.offsetHeight==0){
+            document.getElementById("popup").style.display="flex";
+        }
+        ad.remove();
+    },100);
 }
 
+// ⏳ Timer
 function startTimer(){
     let time=5;
-    document.getElementById("btn").style.display="none";
-
     let t=setInterval(()=>{
         document.getElementById("timer").innerText=time;
         time--;
 
         if(time<0){
             clearInterval(t);
-            document.getElementById("btn").style.display="block";
+            checkUnlock();
         }
     },1000);
 }
 
-function clickBtn(){
+// 👇 Scroll check
+function onScroll(){
+    let el=document.getElementById("adArea");
+    if(el.scrollTop + el.clientHeight >= el.scrollHeight){
+        scrolled=true;
+        checkUnlock();
+    }
+}
 
-    // Smart link open
+// ✅ Unlock button
+function checkUnlock(){
+    if(scrolled){
+        document.getElementById("btn").style.display="block";
+        document.getElementById("msg").innerText="👉 Continue";
+    }else{
+        document.getElementById("msg").innerText="⬇ Scroll down to continue";
+    }
+}
+
+// 👉 Button click
+function next(){
     window.open("https://www.profitablecpmratenetwork.com/qtaz118cip?key=bbcd12ff8e1634b45ff0af410987c8e0");
 
     if(page<5){
-        nextPage();
+        page++;
+        scrolled=false;
+        document.getElementById("title").innerText="Step "+page+"/5";
+        document.getElementById("btn").style.display="none";
+        document.getElementById("adArea").scrollTop=0;
+        startTimer();
     }else{
-        // FINAL SIGNAL
         window.location.href="myapp://reward";
     }
 }
 
-window.onload=startTimer;
+// 🔄 Refresh
+function refreshPage(){
+    location.reload();
+}
+
+window.onload=function(){
+    detectAdBlock();
+    startTimer();
+}
 </script>
 
 </head>
 
 <body>
 
-<div class="container">
+<div class="header">
+<h2 id="title">Step 1/5</h2>
+<p id="msg">⬇ Scroll down to continue</p>
+<p>⏳ Wait: <span id="timer">5</span></p>
+</div>
 
-<h2 id="title">Step 1 / 5</h2>
+<!-- 🔥 ADS AREA -->
+<div id="adArea" onscroll="onScroll()">
 
-<p>⏳ Wait: <span id="timer">5</span> sec</p>
+<!-- 🔥 10 FULL WIDTH BANNERS -->
+<!-- Copy same block multiple times -->
 
-<!-- 🔥 SCROLL ADS -->
-<div id="adArea" class="card">
-
-<!-- Banner 1 -->
+<div class="adbox">
 <script>
 atOptions = {
 'key' : 'fc0b065f98e1a2233ce6ed3cfff41080',
 'format' : 'iframe',
-'height' : 300,
-'width' : 160,
-'params' : {}
+'height' : 250,
+'width' : 300
 };
 </script>
 <script src="https://www.highperformanceformat.com/fc0b065f98e1a2233ce6ed3cfff41080/invoke.js"></script>
+</div>
 
-<br><br>
+<div class="adbox"><script>atOptions={'key':'fc0b065f98e1a2233ce6ed3cfff41080','format':'iframe','height':250,'width':300};</script><script src="https://www.highperformanceformat.com/fc0b065f98e1a2233ce6ed3cfff41080/invoke.js"></script></div>
 
-<!-- Banner 2 -->
-<script>
-atOptions = {
-'key' : 'fc0b065f98e1a2233ce6ed3cfff41080',
-'format' : 'iframe',
-'height' : 300,
-'width' : 160,
-'params' : {}
-};
-</script>
-<script src="https://www.highperformanceformat.com/fc0b065f98e1a2233ce6ed3cfff41080/invoke.js"></script>
+<div class="adbox"><script>atOptions={'key':'fc0b065f98e1a2233ce6ed3cfff41080','format':'iframe','height':250,'width':300};</script><script src="https://www.highperformanceformat.com/fc0b065f98e1a2233ce6ed3cfff41080/invoke.js"></script></div>
 
-<br><br>
+<div class="adbox"><script>atOptions={'key':'fc0b065f98e1a2233ce6ed3cfff41080','format':'iframe','height':250,'width':300};</script><script src="https://www.highperformanceformat.com/fc0b065f98e1a2233ce6ed3cfff41080/invoke.js"></script></div>
 
-<!-- Banner 3 -->
-<script>
-atOptions = {
-'key' : 'fc0b065f98e1a2233ce6ed3cfff41080',
-'format' : 'iframe',
-'height' : 300,
-'width' : 160,
-'params' : {}
-};
-</script>
-<script src="https://www.highperformanceformat.com/fc0b065f98e1a2233ce6ed3cfff41080/invoke.js"></script>
+<div class="adbox"><script>atOptions={'key':'fc0b065f98e1a2233ce6ed3cfff41080','format':'iframe','height':250,'width':300};</script><script src="https://www.highperformanceformat.com/fc0b065f98e1a2233ce6ed3cfff41080/invoke.js"></script></div>
+
+<div class="adbox"><script>atOptions={'key':'fc0b065f98e1a2233ce6ed3cfff41080','format':'iframe','height':250,'width':300};</script><script src="https://www.highperformanceformat.com/fc0b065f98e1a2233ce6ed3cfff41080/invoke.js"></script></div>
+
+<div class="adbox"><script>atOptions={'key':'fc0b065f98e1a2233ce6ed3cfff41080','format':'iframe','height':250,'width':300};</script><script src="https://www.highperformanceformat.com/fc0b065f98e1a2233ce6ed3cfff41080/invoke.js"></script></div>
+
+<div class="adbox"><script>atOptions={'key':'fc0b065f98e1a2233ce6ed3cfff41080','format':'iframe','height':250,'width':300};</script><script src="https://www.highperformanceformat.com/fc0b065f98e1a2233ce6ed3cfff41080/invoke.js"></script></div>
+
+<div class="adbox"><script>atOptions={'key':'fc0b065f98e1a2233ce6ed3cfff41080','format':'iframe','height':250,'width':300};</script><script src="https://www.highperformanceformat.com/fc0b065f98e1a2233ce6ed3cfff41080/invoke.js"></script></div>
+
+<div class="adbox"><script>atOptions={'key':'fc0b065f98e1a2233ce6ed3cfff41080','format':'iframe','height':250,'width':300};</script><script src="https://www.highperformanceformat.com/fc0b065f98e1a2233ce6ed3cfff41080/invoke.js"></script></div>
 
 </div>
 
-<button id="btn" onclick="clickBtn()" style="display:none;">
-👉 Continue
-</button>
+<!-- BUTTON -->
+<button id="btn" onclick="next()">👉 Continue</button>
 
+<!-- 🚫 ADBLOCK POPUP -->
+<div id="popup">
+<div class="popupBox">
+<h3>⚠ AdBlock Detected</h3>
+<p>Please disable AdBlock to continue</p>
+<button onclick="refreshPage()">🔄 Refresh</button>
+</div>
 </div>
 
 </body>
