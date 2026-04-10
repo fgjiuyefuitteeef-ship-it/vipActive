@@ -2,7 +2,6 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>SR Killer</title>
 
 <style>
@@ -21,8 +20,8 @@ body{
 }
 
 #adArea{
-    height:75vh;
-    overflow-y:scroll;
+    height:60vh; /* 👈 scroll guaranteed */
+    overflow-y:auto;
     padding:10px;
 }
 
@@ -34,7 +33,6 @@ body{
 .adtext{
     font-size:12px;
     color:#aaa;
-    margin-top:5px;
 }
 
 #btn{
@@ -42,37 +40,15 @@ body{
     bottom:10px;
     left:10px;
     right:10px;
-    padding:12px;
-    font-size:14px;
+    padding:14px;
+    font-size:16px;
     border:none;
     border-radius:8px;
     background:#22c55e;
     color:white;
     display:none;
 }
-
-#popup{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:#000000cc;
-    display:none;
-    justify-content:center;
-    align-items:center;
-}
-
-.popupBox{
-    background:#1e293b;
-    padding:20px;
-    border-radius:10px;
-    text-align:center;
-}
 </style>
-
-<!-- POPUNDER -->
-<script src="https://pl29111654.profitablecpmratenetwork.com/0a/da/53/0ada53cf1ee2fc328e4161f0372bf804.js"></script>
 
 <script>
 let page=1;
@@ -82,13 +58,12 @@ let timerDone=false;
 // ⏳ TIMER
 function startTimer(){
     let time=5;
-    timerDone=false;
 
     let t=setInterval(()=>{
         document.getElementById("timer").innerText=time;
         time--;
 
-        if(time<0){
+        if(time < 0){
             clearInterval(t);
             timerDone=true;
             checkUnlock();
@@ -96,74 +71,28 @@ function startTimer(){
     },1000);
 }
 
-// 📜 SCROLL FIXED (95% + % method)
+// 📜 SCROLL (simple & guaranteed)
 function onScroll(){
-    let el=document.getElementById("adArea");
-
-    let percent=(el.scrollTop + el.clientHeight)/el.scrollHeight*100;
-
-    if(percent > 90){
-        scrolled=true;
-        checkUnlock();
-    }
+    scrolled=true;
+    checkUnlock();
 }
 
-// 🔥 BACKUP CHECK (fast scroll fix)
-setInterval(()=>{
-    let el=document.getElementById("adArea");
-    if(!el) return;
-
-    let percent=(el.scrollTop + el.clientHeight)/el.scrollHeight*100;
-
-    if(percent > 90){
-        scrolled=true;
-        checkUnlock();
-    }
-},500);
-
-// 🔓 BUTTON UNLOCK
+// 🔓 BUTTON SHOW
 function checkUnlock(){
     if(scrolled && timerDone){
         let btn=document.getElementById("btn");
         btn.style.display="block";
-        btn.innerText=(page==5) ? "🎁 Get Link" : "👉 Continue";
+        btn.innerText = (page==5) ? "🎁 Get Link" : "👉 Continue";
     }
-}
-
-// ✅ CHECK ADS ON CLICK ONLY
-function checkAdsBeforeNext(){
-
-    let adLoaded=false;
-
-    let container=document.getElementById("container-54426d319c08a1ac0383777873cb1ed5");
-
-    if(container && container.innerHTML.trim().length > 50){
-        adLoaded=true;
-    }
-
-    let iframes=document.getElementsByTagName("iframe");
-    if(iframes.length > 1){
-        adLoaded=true;
-    }
-
-    if(!adLoaded){
-        document.getElementById("popup").style.display="flex";
-        return false;
-    }
-
-    return true;
 }
 
 // 👉 NEXT
 function next(){
 
-    if(!checkAdsBeforeNext()){
-        return;
-    }
-
+    // 🔥 Smart link open
     window.open("https://www.profitablecpmratenetwork.com/qtaz118cip?key=bbcd12ff8e1634b45ff0af410987c8e0");
 
-    if(page<5){
+    if(page < 5){
         page++;
         scrolled=false;
         timerDone=false;
@@ -174,15 +103,12 @@ function next(){
 
         startTimer();
     }else{
+        // 🎁 FINAL REWARD
         window.location.href="myapp://reward";
     }
 }
 
-// 🔄 REFRESH
-function refreshPage(){
-    location.reload();
-}
-
+// START
 window.onload=function(){
     startTimer();
 }
@@ -199,26 +125,19 @@ SR Killer (Step 1/5)
 <center>
 ⏳ Wait: <span id="timer">5</span> sec  
 <br><br>
-⬇ Scroll down to continue
+⬇ Scroll a little to continue
 </center>
 
 <!-- ADS AREA -->
 <div id="adArea" onscroll="onScroll()">
 
-<!-- NATIVE AD -->
-<div class="adbox">
-<script async src="https://pl29111657.profitablecpmratenetwork.com/54426d319c08a1ac0383777873cb1ed5/invoke.js"></script>
-<div id="container-54426d319c08a1ac0383777873cb1ed5"></div>
-<div class="adtext">Sponsored Ad - Click if interested</div>
-</div>
-
-<!-- MULTIPLE BANNERS -->
+<!-- 🔥 ADD MANY ADS FOR SCROLL -->
 <div class="adbox">
 <script>
 atOptions={'key':'4a8a25cd73058be8ffce6a94c4cd32d9','format':'iframe','height':250,'width':300};
 </script>
 <script src="https://www.highperformanceformat.com/4a8a25cd73058be8ffce6a94c4cd32d9/invoke.js"></script>
-<div class="adtext">Advertisement - Support us</div>
+<p class="adtext">Advertisement</p>
 </div>
 
 <div class="adbox">
@@ -226,7 +145,7 @@ atOptions={'key':'4a8a25cd73058be8ffce6a94c4cd32d9','format':'iframe','height':2
 atOptions={'key':'4a8a25cd73058be8ffce6a94c4cd32d9','format':'iframe','height':250,'width':300};
 </script>
 <script src="https://www.highperformanceformat.com/4a8a25cd73058be8ffce6a94c4cd32d9/invoke.js"></script>
-<div class="adtext">Advertisement - Support us</div>
+<p class="adtext">Advertisement</p>
 </div>
 
 <div class="adbox">
@@ -234,7 +153,7 @@ atOptions={'key':'4a8a25cd73058be8ffce6a94c4cd32d9','format':'iframe','height':2
 atOptions={'key':'4a8a25cd73058be8ffce6a94c4cd32d9','format':'iframe','height':250,'width':300};
 </script>
 <script src="https://www.highperformanceformat.com/4a8a25cd73058be8ffce6a94c4cd32d9/invoke.js"></script>
-<div class="adtext">Advertisement - Support us</div>
+<p class="adtext">Advertisement</p>
 </div>
 
 <div class="adbox">
@@ -242,22 +161,21 @@ atOptions={'key':'4a8a25cd73058be8ffce6a94c4cd32d9','format':'iframe','height':2
 atOptions={'key':'4a8a25cd73058be8ffce6a94c4cd32d9','format':'iframe','height':250,'width':300};
 </script>
 <script src="https://www.highperformanceformat.com/4a8a25cd73058be8ffce6a94c4cd32d9/invoke.js"></script>
-<div class="adtext">Advertisement - Support us</div>
+<p class="adtext">Advertisement</p>
+</div>
+
+<div class="adbox">
+<script>
+atOptions={'key':'4a8a25cd73058be8ffce6a94c4cd32d9','format':'iframe','height':250,'width':300};
+</script>
+<script src="https://www.highperformanceformat.com/4a8a25cd73058be8ffce6a94c4cd32d9/invoke.js"></script>
+<p class="adtext">Advertisement</p>
 </div>
 
 </div>
 
 <!-- BUTTON -->
 <button id="btn" onclick="next()">👉 Continue</button>
-
-<!-- POPUP -->
-<div id="popup">
-<div class="popupBox">
-<h3>⚠ AdBlock Detected</h3>
-<p>Disable AdBlock and refresh</p>
-<button onclick="refreshPage()">🔄 Refresh</button>
-</div>
-</div>
 
 </body>
 </html>
