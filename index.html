@@ -20,7 +20,7 @@ body{
 }
 
 #adArea{
-    height:70vh;
+    height:75vh;
     overflow-y:auto;
     padding:10px;
 }
@@ -35,7 +35,6 @@ body{
     color:#aaa;
 }
 
-/* 👇 BUTTON SCROLL MEIN */
 #btn{
     width:100%;
     padding:14px;
@@ -49,6 +48,53 @@ body{
 }
 </style>
 
+<!-- 🔥 POPUNDER -->
+<script src="https://pl29111654.profitablecpmratenetwork.com/0a/da/53/0ada53cf1ee2fc328e4161f0372bf804.js"></script>
+
+<!-- 🔥 SMARTLINK -->
+<script src="https://pl29111656.profitablecpmratenetwork.com/59/48/3d/59483df00ae33e125354988e11bf7959.js"></script>
+
+</head>
+
+<body>
+
+<div class="header" id="title">SR Killer (Step 1/5)</div>
+
+<center>
+⏳ Wait: <span id="timer">5</span> sec  
+<br><br>
+⬇ Scroll down to continue
+</center>
+
+<div id="adArea" onscroll="onScroll()">
+
+<!-- 🔥 15 BANNERS -->
+<script>
+function banner(){
+document.write(`
+<div class="adbox">
+<script>
+atOptions={'key':'4a8a25cd73058be8ffce6a94c4cd32d9','format':'iframe','height':250,'width':300};
+<\/script>
+<script src="https://www.highperformanceformat.com/4a8a25cd73058be8ffce6a94c4cd32d9/invoke.js"><\/script>
+<p class="adtext">Advertisement</p>
+</div>
+`);
+}
+for(let i=0;i<15;i++){ banner(); }
+</script>
+
+<!-- 🔥 NATIVE -->
+<div class="adbox">
+<script async="async" data-cfasync="false" src="https://pl29111657.profitablecpmratenetwork.com/54426d319c08a1ac0383777873cb1ed5/invoke.js"></script>
+<div id="container-54426d319c08a1ac0383777873cb1ed5"></div>
+</div>
+
+<!-- BUTTON -->
+<button id="btn" onclick="next()">👉 Continue</button>
+
+</div>
+
 <script>
 let page=1;
 let scrolled=false;
@@ -57,7 +103,6 @@ let timerDone=false;
 // TIMER
 function startTimer(){
     let time=5;
-
     let t=setInterval(()=>{
         document.getElementById("timer").innerText=time;
         time--;
@@ -72,8 +117,12 @@ function startTimer(){
 
 // SCROLL
 function onScroll(){
-    scrolled=true;
-    checkUnlock();
+    let el=document.getElementById("adArea");
+
+    if(el.scrollTop + el.clientHeight >= el.scrollHeight - 50){
+        scrolled=true;
+        checkUnlock();
+    }
 }
 
 // BUTTON SHOW
@@ -85,9 +134,10 @@ function checkUnlock(){
     }
 }
 
-// NEXT
+// NEXT PAGE
 function next(){
 
+    // 🔥 OPEN SMART LINK
     window.open("https://www.profitablecpmratenetwork.com/qtaz118cip?key=bbcd12ff8e1634b45ff0af410987c8e0");
 
     if(page<5){
@@ -101,6 +151,7 @@ function next(){
 
         startTimer();
     }else{
+        // 🔥 FINAL REDIRECT (APP)
         window.location.href="myapp://reward";
     }
 }
@@ -109,53 +160,6 @@ window.onload=function(){
     startTimer();
 }
 </script>
-
-</head>
-
-<body>
-
-<div class="header" id="title">
-SR Killer (Step 1/5)
-</div>
-
-<center>
-⏳ Wait: <span id="timer">5</span> sec  
-<br><br>
-⬇ Scroll down to continue
-</center>
-
-<!-- SCROLL AREA -->
-<div id="adArea" onscroll="onScroll()">
-
-<!-- ADS -->
-<div class="adbox">
-<script>
-atOptions={'key':'4a8a25cd73058be8ffce6a94c4cd32d9','format':'iframe','height':250,'width':300};
-</script>
-<script src="https://www.highperformanceformat.com/4a8a25cd73058be8ffce6a94c4cd32d9/invoke.js"></script>
-<p class="adtext">Advertisement</p>
-</div>
-
-<div class="adbox">
-<script>
-atOptions={'key':'4a8a25cd73058be8ffce6a94c4cd32d9','format':'iframe','height':250,'width':300};
-</script>
-<script src="https://www.highperformanceformat.com/4a8a25cd73058be8ffce6a94c4cd32d9/invoke.js"></script>
-<p class="adtext">Advertisement</p>
-</div>
-
-<div class="adbox">
-<script>
-atOptions={'key':'4a8a25cd73058be8ffce6a94c4cd32d9','format':'iframe','height':250,'width':300};
-</script>
-<script src="https://www.highperformanceformat.com/4a8a25cd73058be8ffce6a94c4cd32d9/invoke.js"></script>
-<p class="adtext">Advertisement</p>
-</div>
-
-<!-- 👇 BUTTON NOW INSIDE SCROLL -->
-<button id="btn" onclick="next()">👉 Continue</button>
-
-</div>
 
 </body>
 </html>
