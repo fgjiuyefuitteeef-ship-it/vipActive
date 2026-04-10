@@ -13,7 +13,6 @@ body{
     color:white;
 }
 
-/* HEADER */
 .header{
     text-align:center;
     padding:15px;
@@ -21,27 +20,23 @@ body{
     font-weight:bold;
 }
 
-/* SCROLL AREA */
 #adArea{
     height:75vh;
     overflow-y:scroll;
     padding:10px;
 }
 
-/* BANNER BOX */
 .adbox{
     margin:15px 0;
     text-align:center;
 }
 
-/* TEXT UNDER AD */
 .adtext{
     font-size:12px;
     color:#aaa;
     margin-top:5px;
 }
 
-/* BUTTON */
 #btn{
     position:fixed;
     bottom:10px;
@@ -56,7 +51,6 @@ body{
     display:none;
 }
 
-/* POPUP */
 #popup{
     position:fixed;
     top:0;
@@ -85,18 +79,29 @@ let page=1;
 let scrolled=false;
 let timerDone=false;
 
-// 🔒 Adblock check
+// ✅ FIXED AdBlock Detection
 function detectAdBlock(){
-    let ad=document.createElement("div");
-    ad.className="adsbox";
-    document.body.appendChild(ad);
 
     setTimeout(()=>{
-        if(ad.offsetHeight==0){
+
+        let adLoaded = false;
+
+        let container = document.getElementById("container-54426d319c08a1ac0383777873cb1ed5");
+
+        if(container && container.innerHTML.trim() !== ""){
+            adLoaded = true;
+        }
+
+        let iframes = document.getElementsByTagName("iframe");
+        if(iframes.length > 0){
+            adLoaded = true;
+        }
+
+        if(!adLoaded){
             document.getElementById("popup").style.display="flex";
         }
-        ad.remove();
-    },100);
+
+    },3000);
 }
 
 // ⏳ TIMER
@@ -125,15 +130,16 @@ function onScroll(){
     }
 }
 
-// 🔓 UNLOCK BUTTON
+// 🔓 BUTTON UNLOCK
 function checkUnlock(){
     if(scrolled && timerDone){
-        document.getElementById("btn").style.display="block";
-        document.getElementById("btn").innerText = (page==5) ? "🎁 Get Link" : "👉 Continue";
+        let btn = document.getElementById("btn");
+        btn.style.display="block";
+        btn.innerText = (page==5) ? "🎁 Get Link" : "👉 Continue";
     }
 }
 
-// 👉 CLICK
+// 👉 NEXT
 function next(){
 
     window.open("https://www.profitablecpmratenetwork.com/qtaz118cip?key=bbcd12ff8e1634b45ff0af410987c8e0");
@@ -149,7 +155,6 @@ function next(){
 
         startTimer();
     }else{
-        // FINAL WORKING
         window.location.href="myapp://reward";
     }
 }
@@ -160,8 +165,8 @@ function refreshPage(){
 }
 
 window.onload=function(){
-    detectAdBlock();
     startTimer();
+    detectAdBlock();
 }
 </script>
 
@@ -179,38 +184,51 @@ SR Killer (Step 1/5)
 ⬇ Scroll down to continue
 </center>
 
-<!-- ADS -->
 <div id="adArea" onscroll="onScroll()">
 
-<!-- NATIVE -->
+<!-- NATIVE AD -->
 <div class="adbox">
 <script async src="https://pl29111657.profitablecpmratenetwork.com/54426d319c08a1ac0383777873cb1ed5/invoke.js"></script>
 <div id="container-54426d319c08a1ac0383777873cb1ed5"></div>
 <div class="adtext">Sponsored Ad - Click if interested</div>
 </div>
 
-<!-- MULTIPLE BANNERS -->
+<!-- BANNER 1 -->
+<div class="adbox">
+<script>
+atOptions={'key':'4a8a25cd73058be8ffce6a94c4cd32d9','format':'iframe','height':250,'width':300};
+</script>
+<script src="https://www.highperformanceformat.com/4a8a25cd73058be8ffce6a94c4cd32d9/invoke.js"></script>
+<div class="adtext">Advertisement - Support us</div>
+</div>
+
+<!-- COPY BELOW FOR MORE ADS -->
 
 <div class="adbox">
 <script>
 atOptions={'key':'4a8a25cd73058be8ffce6a94c4cd32d9','format':'iframe','height':250,'width':300};
 </script>
 <script src="https://www.highperformanceformat.com/4a8a25cd73058be8ffce6a94c4cd32d9/invoke.js"></script>
-<div class="adtext">Advertisement - Support us by viewing ads</div>
+<div class="adtext">Advertisement - Support us</div>
 </div>
 
-<!-- COPY SAME BLOCK 8-10 TIMES -->
+<div class="adbox">
+<script>
+atOptions={'key':'4a8a25cd73058be8ffce6a94c4cd32d9','format':'iframe','height':250,'width':300};
+</script>
+<script src="https://www.highperformanceformat.com/4a8a25cd73058be8ffce6a94c4cd32d9/invoke.js"></script>
+<div class="adtext">Advertisement - Support us</div>
+</div>
 
 </div>
 
-<!-- BUTTON -->
 <button id="btn" onclick="next()">👉 Continue</button>
 
 <!-- POPUP -->
 <div id="popup">
 <div class="popupBox">
 <h3>⚠ AdBlock Detected</h3>
-<p>Disable AdBlock to continue</p>
+<p>Disable AdBlock and refresh</p>
 <button onclick="refreshPage()">🔄 Refresh</button>
 </div>
 </div>
