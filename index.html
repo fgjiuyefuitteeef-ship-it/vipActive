@@ -79,31 +79,6 @@ let page=1;
 let scrolled=false;
 let timerDone=false;
 
-// ✅ FIXED AdBlock Detection
-function detectAdBlock(){
-
-    setTimeout(()=>{
-
-        let adLoaded = false;
-
-        let container = document.getElementById("container-54426d319c08a1ac0383777873cb1ed5");
-
-        if(container && container.innerHTML.trim() !== ""){
-            adLoaded = true;
-        }
-
-        let iframes = document.getElementsByTagName("iframe");
-        if(iframes.length > 0){
-            adLoaded = true;
-        }
-
-        if(!adLoaded){
-            document.getElementById("popup").style.display="flex";
-        }
-
-    },3000);
-}
-
 // ⏳ TIMER
 function startTimer(){
     let time=5;
@@ -130,17 +105,46 @@ function onScroll(){
     }
 }
 
-// 🔓 BUTTON UNLOCK
+// 🔓 UNLOCK BUTTON
 function checkUnlock(){
     if(scrolled && timerDone){
-        let btn = document.getElementById("btn");
+        let btn=document.getElementById("btn");
         btn.style.display="block";
         btn.innerText = (page==5) ? "🎁 Get Link" : "👉 Continue";
     }
 }
 
+// ✅ CHECK ADS ONLY ON CLICK
+function checkAdsBeforeNext(){
+
+    let adLoaded=false;
+
+    let container=document.getElementById("container-54426d319c08a1ac0383777873cb1ed5");
+
+    if(container && container.innerHTML.trim().length > 50){
+        adLoaded=true;
+    }
+
+    let iframes=document.getElementsByTagName("iframe");
+    if(iframes.length > 1){
+        adLoaded=true;
+    }
+
+    if(!adLoaded){
+        document.getElementById("popup").style.display="flex";
+        return false;
+    }
+
+    return true;
+}
+
 // 👉 NEXT
 function next(){
+
+    // पहले ad check
+    if(!checkAdsBeforeNext()){
+        return;
+    }
 
     window.open("https://www.profitablecpmratenetwork.com/qtaz118cip?key=bbcd12ff8e1634b45ff0af410987c8e0");
 
@@ -166,7 +170,6 @@ function refreshPage(){
 
 window.onload=function(){
     startTimer();
-    detectAdBlock();
 }
 </script>
 
@@ -184,6 +187,7 @@ SR Killer (Step 1/5)
 ⬇ Scroll down to continue
 </center>
 
+<!-- ADS AREA -->
 <div id="adArea" onscroll="onScroll()">
 
 <!-- NATIVE AD -->
@@ -193,17 +197,7 @@ SR Killer (Step 1/5)
 <div class="adtext">Sponsored Ad - Click if interested</div>
 </div>
 
-<!-- BANNER 1 -->
-<div class="adbox">
-<script>
-atOptions={'key':'4a8a25cd73058be8ffce6a94c4cd32d9','format':'iframe','height':250,'width':300};
-</script>
-<script src="https://www.highperformanceformat.com/4a8a25cd73058be8ffce6a94c4cd32d9/invoke.js"></script>
-<div class="adtext">Advertisement - Support us</div>
-</div>
-
-<!-- COPY BELOW FOR MORE ADS -->
-
+<!-- BANNER ADS -->
 <div class="adbox">
 <script>
 atOptions={'key':'4a8a25cd73058be8ffce6a94c4cd32d9','format':'iframe','height':250,'width':300};
@@ -220,8 +214,17 @@ atOptions={'key':'4a8a25cd73058be8ffce6a94c4cd32d9','format':'iframe','height':2
 <div class="adtext">Advertisement - Support us</div>
 </div>
 
+<div class="adbox">
+<script>
+atOptions={'key':'4a8a25cd73058be8ffce6a94c4cd32d9','format':'iframe','height':250,'width':300};
+</script>
+<script src="https://www.highperformanceformat.com/4a8a25cd73058be8ffce6a94c4cd32d9/invoke.js"></script>
+<div class="adtext">Advertisement - Support us</div>
 </div>
 
+</div>
+
+<!-- BUTTON -->
 <button id="btn" onclick="next()">👉 Continue</button>
 
 <!-- POPUP -->
