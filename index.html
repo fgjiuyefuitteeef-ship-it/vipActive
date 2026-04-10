@@ -1,76 +1,69 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>VIP Unlock</title>
-<style>
-body { background:#111; color:white; text-align:center; }
-#locked { display:block; }
-#unlocked { display:none; }
-</style>
-</head>
-
-<body>
-
-<div id="locked">
-<h2>🔒 Locked</h2>
-</div>
-
-<div id="unlocked">
-<h2>🎉 VIP PASS</h2>
-<h1 id="pass">Loading...</h1>
-</div>
-
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Earn Page</title>
 
 <script>
-var firebaseConfig = {
-  apiKey: "YOUR_KEY",
-  databaseURL: "YOUR_DB_URL"
-};
+let page = 1;
 
-firebase.initializeApp(firebaseConfig);
+function nextPage() {
+    page++;
 
-let params = new URLSearchParams(location.search);
-let id = params.get("id");
-let token = params.get("token");
+    if (page <= 5) {
+        document.getElementById("title").innerText = "Step " + page + " / 5";
+        startTimer();
+    }
 
-// ❌ Direct access block
-if(document.referrer === "") {
-    document.body.innerHTML = "❌ Access Denied";
+    if (page == 5) {
+        document.getElementById("btn").innerText = "🎁 Claim Reward";
+    }
 }
 
-// Cookie check
-if(document.cookie.includes("vip_access=true")) {
+function startTimer() {
+    let time = 5;
+    let t = setInterval(() => {
+        document.getElementById("timer").innerText = time;
+        time--;
 
-    firebase.database().ref("videoPass/" + id).once("value")
-    .then(snap => {
-
-        let data = snap.val();
-
-        if(data != null) {
-
-            let now = Date.now()/1000;
-
-            if(data.token == token && now < data.expiry) {
-
-                // Unlock
-                document.getElementById("locked").style.display = "none";
-                document.getElementById("unlocked").style.display = "block";
-
-                document.getElementById("pass").innerText = data.pass;
-
-            } else {
-                document.body.innerHTML = "❌ Invalid / Expired";
-            }
-
-        } else {
-            document.body.innerHTML = "❌ No Data";
+        if (time < 0) {
+            clearInterval(t);
+            document.getElementById("btn").style.display = "block";
         }
+    }, 1000);
 
-    });
+    document.getElementById("btn").style.display = "none";
+}
 
+function clickBtn() {
+
+    // हर page पर ad open
+    window.open("https://www.profitablecpmratenetwork.com/qtaz118cip?key=bbcd12ff8e1634b45ff0af410987c8e0");
+
+    if (page < 5) {
+        nextPage();
+    } else {
+        // FINAL SUCCESS → APP KO SIGNAL
+        window.location.href = "myapp://reward";
+    }
+}
+
+window.onload = function () {
+    startTimer();
 }
 </script>
+
+</head>
+
+<body style="text-align:center; font-family:sans-serif; padding-top:50px;">
+
+<h2 id="title">Step 1 / 5</h2>
+
+<p>⏳ Wait: <span id="timer">5</span> sec</p>
+
+<button id="btn" onclick="clickBtn()" style="display:none; padding:15px 30px; font-size:16px;">
+👉 Continue
+</button>
 
 </body>
 </html>
