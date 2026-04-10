@@ -20,7 +20,7 @@ body{
 }
 
 #adArea{
-    height:60vh; /* 👈 scroll guaranteed */
+    height:70vh;
     overflow-y:auto;
     padding:10px;
 }
@@ -35,11 +35,9 @@ body{
     color:#aaa;
 }
 
+/* 👇 BUTTON SCROLL MEIN */
 #btn{
-    position:fixed;
-    bottom:10px;
-    left:10px;
-    right:10px;
+    width:100%;
     padding:14px;
     font-size:16px;
     border:none;
@@ -47,6 +45,7 @@ body{
     background:#22c55e;
     color:white;
     display:none;
+    margin-top:20px;
 }
 </style>
 
@@ -55,7 +54,7 @@ let page=1;
 let scrolled=false;
 let timerDone=false;
 
-// ⏳ TIMER
+// TIMER
 function startTimer(){
     let time=5;
 
@@ -71,28 +70,27 @@ function startTimer(){
     },1000);
 }
 
-// 📜 SCROLL (simple & guaranteed)
+// SCROLL
 function onScroll(){
     scrolled=true;
     checkUnlock();
 }
 
-// 🔓 BUTTON SHOW
+// BUTTON SHOW
 function checkUnlock(){
     if(scrolled && timerDone){
         let btn=document.getElementById("btn");
         btn.style.display="block";
-        btn.innerText = (page==5) ? "🎁 Get Link" : "👉 Continue";
+        btn.innerText=(page==5) ? "🎁 Get Link" : "👉 Continue";
     }
 }
 
-// 👉 NEXT
+// NEXT
 function next(){
 
-    // 🔥 Smart link open
     window.open("https://www.profitablecpmratenetwork.com/qtaz118cip?key=bbcd12ff8e1634b45ff0af410987c8e0");
 
-    if(page < 5){
+    if(page<5){
         page++;
         scrolled=false;
         timerDone=false;
@@ -103,12 +101,10 @@ function next(){
 
         startTimer();
     }else{
-        // 🎁 FINAL REWARD
         window.location.href="myapp://reward";
     }
 }
 
-// START
 window.onload=function(){
     startTimer();
 }
@@ -125,13 +121,13 @@ SR Killer (Step 1/5)
 <center>
 ⏳ Wait: <span id="timer">5</span> sec  
 <br><br>
-⬇ Scroll a little to continue
+⬇ Scroll down to continue
 </center>
 
-<!-- ADS AREA -->
+<!-- SCROLL AREA -->
 <div id="adArea" onscroll="onScroll()">
 
-<!-- 🔥 ADD MANY ADS FOR SCROLL -->
+<!-- ADS -->
 <div class="adbox">
 <script>
 atOptions={'key':'4a8a25cd73058be8ffce6a94c4cd32d9','format':'iframe','height':250,'width':300};
@@ -156,26 +152,10 @@ atOptions={'key':'4a8a25cd73058be8ffce6a94c4cd32d9','format':'iframe','height':2
 <p class="adtext">Advertisement</p>
 </div>
 
-<div class="adbox">
-<script>
-atOptions={'key':'4a8a25cd73058be8ffce6a94c4cd32d9','format':'iframe','height':250,'width':300};
-</script>
-<script src="https://www.highperformanceformat.com/4a8a25cd73058be8ffce6a94c4cd32d9/invoke.js"></script>
-<p class="adtext">Advertisement</p>
-</div>
-
-<div class="adbox">
-<script>
-atOptions={'key':'4a8a25cd73058be8ffce6a94c4cd32d9','format':'iframe','height':250,'width':300};
-</script>
-<script src="https://www.highperformanceformat.com/4a8a25cd73058be8ffce6a94c4cd32d9/invoke.js"></script>
-<p class="adtext">Advertisement</p>
-</div>
-
-</div>
-
-<!-- BUTTON -->
+<!-- 👇 BUTTON NOW INSIDE SCROLL -->
 <button id="btn" onclick="next()">👉 Continue</button>
+
+</div>
 
 </body>
 </html>
