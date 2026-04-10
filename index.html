@@ -2,43 +2,61 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Premium Earn</title>
+
+<title>SR Killer</title>
 
 <style>
 body{
     margin:0;
     font-family:sans-serif;
-    background:linear-gradient(135deg,#0f172a,#1e293b);
+    background:#0f172a;
     color:white;
 }
 
+/* HEADER */
 .header{
     text-align:center;
-    padding:20px;
+    padding:15px;
+    font-size:20px;
+    font-weight:bold;
 }
 
+/* SCROLL AREA */
 #adArea{
-    height:70vh;
+    height:75vh;
     overflow-y:scroll;
     padding:10px;
 }
 
+/* BANNER BOX */
 .adbox{
     margin:15px 0;
-    display:flex;
-    justify-content:center;
+    text-align:center;
 }
 
-button{
-    width:100%;
-    padding:15px;
-    font-size:18px;
+/* TEXT UNDER AD */
+.adtext{
+    font-size:12px;
+    color:#aaa;
+    margin-top:5px;
+}
+
+/* BUTTON */
+#btn{
+    position:fixed;
+    bottom:10px;
+    left:10px;
+    right:10px;
+    padding:12px;
+    font-size:14px;
     border:none;
+    border-radius:8px;
     background:#22c55e;
     color:white;
     display:none;
 }
 
+/* POPUP */
 #popup{
     position:fixed;
     top:0;
@@ -59,20 +77,15 @@ button{
 }
 </style>
 
-<!-- 🔥 POPUNDER -->
+<!-- POPUNDER -->
 <script src="https://pl29111654.profitablecpmratenetwork.com/0a/da/53/0ada53cf1ee2fc328e4161f0372bf804.js"></script>
-
-<!-- 🔥 SMART LINK SCRIPT -->
-<script src="https://pl29111656.profitablecpmratenetwork.com/59/48/3d/59483df00ae33e125354988e11bf7959.js"></script>
-
-<!-- 🔥 SOCIAL BAR -->
-<script src="https://pl29111656.profitablecpmratenetwork.com/59/48/3d/59483df00ae33e125354988e11bf7959.js"></script>
 
 <script>
 let page=1;
 let scrolled=false;
+let timerDone=false;
 
-// AdBlock detect
+// 🔒 Adblock check
 function detectAdBlock(){
     let ad=document.createElement("div");
     ad.className="adsbox";
@@ -86,21 +99,24 @@ function detectAdBlock(){
     },100);
 }
 
-// Timer
+// ⏳ TIMER
 function startTimer(){
     let time=5;
+    timerDone=false;
+
     let t=setInterval(()=>{
         document.getElementById("timer").innerText=time;
         time--;
 
         if(time<0){
             clearInterval(t);
+            timerDone=true;
             checkUnlock();
         }
     },1000);
 }
 
-// Scroll detect
+// 📜 SCROLL
 function onScroll(){
     let el=document.getElementById("adArea");
     if(el.scrollTop + el.clientHeight >= el.scrollHeight){
@@ -109,35 +125,36 @@ function onScroll(){
     }
 }
 
-// Unlock button
+// 🔓 UNLOCK BUTTON
 function checkUnlock(){
-    if(scrolled){
+    if(scrolled && timerDone){
         document.getElementById("btn").style.display="block";
-        document.getElementById("msg").innerText="👉 Continue";
-    }else{
-        document.getElementById("msg").innerText="⬇ Scroll down to continue";
+        document.getElementById("btn").innerText = (page==5) ? "🎁 Get Link" : "👉 Continue";
     }
 }
 
-// Button click
+// 👉 CLICK
 function next(){
 
-    // Smart link open
     window.open("https://www.profitablecpmratenetwork.com/qtaz118cip?key=bbcd12ff8e1634b45ff0af410987c8e0");
 
     if(page<5){
         page++;
         scrolled=false;
-        document.getElementById("title").innerText="Step "+page+"/5";
+        timerDone=false;
+
+        document.getElementById("title").innerText="SR Killer (Step "+page+"/5)";
         document.getElementById("btn").style.display="none";
         document.getElementById("adArea").scrollTop=0;
+
         startTimer();
     }else{
+        // FINAL WORKING
         window.location.href="myapp://reward";
     }
 }
 
-// Refresh
+// 🔄 REFRESH
 function refreshPage(){
     location.reload();
 }
@@ -152,54 +169,48 @@ window.onload=function(){
 
 <body>
 
-<div class="header">
-<h2 id="title">Step 1/5</h2>
-<p id="msg">⬇ Scroll down to continue</p>
-<p>⏳ Wait: <span id="timer">5</span></p>
+<div class="header" id="title">
+SR Killer (Step 1/5)
 </div>
 
-<!-- 🔥 ADS AREA -->
+<center>
+⏳ Wait: <span id="timer">5</span> sec  
+<br><br>
+⬇ Scroll down to continue
+</center>
+
+<!-- ADS -->
 <div id="adArea" onscroll="onScroll()">
 
-<!-- 🔥 NATIVE BANNER -->
-<script async="async" data-cfasync="false"
-src="https://pl29111657.profitablecpmratenetwork.com/54426d319c08a1ac0383777873cb1ed5/invoke.js"></script>
+<!-- NATIVE -->
+<div class="adbox">
+<script async src="https://pl29111657.profitablecpmratenetwork.com/54426d319c08a1ac0383777873cb1ed5/invoke.js"></script>
 <div id="container-54426d319c08a1ac0383777873cb1ed5"></div>
+<div class="adtext">Sponsored Ad - Click if interested</div>
+</div>
 
-<!-- 🔥 MULTIPLE 300x250 BANNERS -->
+<!-- MULTIPLE BANNERS -->
 
 <div class="adbox">
 <script>
-atOptions = {
-'key' : '4a8a25cd73058be8ffce6a94c4cd32d9',
-'format' : 'iframe',
-'height' : 250,
-'width' : 300
-};
+atOptions={'key':'4a8a25cd73058be8ffce6a94c4cd32d9','format':'iframe','height':250,'width':300};
 </script>
 <script src="https://www.highperformanceformat.com/4a8a25cd73058be8ffce6a94c4cd32d9/invoke.js"></script>
+<div class="adtext">Advertisement - Support us by viewing ads</div>
 </div>
 
-<!-- COPY BELOW BLOCK MULTIPLE TIMES -->
-
-<div class="adbox"><script>atOptions={'key':'4a8a25cd73058be8ffce6a94c4cd32d9','format':'iframe','height':250,'width':300};</script><script src="https://www.highperformanceformat.com/4a8a25cd73058be8ffce6a94c4cd32d9/invoke.js"></script></div>
-
-<div class="adbox"><script>atOptions={'key':'4a8a25cd73058be8ffce6a94c4cd32d9','format':'iframe','height':250,'width':300};</script><script src="https://www.highperformanceformat.com/4a8a25cd73058be8ffce6a94c4cd32d9/invoke.js"></script></div>
-
-<div class="adbox"><script>atOptions={'key':'4a8a25cd73058be8ffce6a94c4cd32d9','format':'iframe','height':250,'width':300};</script><script src="https://www.highperformanceformat.com/4a8a25cd73058be8ffce6a94c4cd32d9/invoke.js"></script></div>
-
-<div class="adbox"><script>atOptions={'key':'4a8a25cd73058be8ffce6a94c4cd32d9','format':'iframe','height':250,'width':300};</script><script src="https://www.highperformanceformat.com/4a8a25cd73058be8ffce6a94c4cd32d9/invoke.js"></script></div>
+<!-- COPY SAME BLOCK 8-10 TIMES -->
 
 </div>
 
 <!-- BUTTON -->
 <button id="btn" onclick="next()">👉 Continue</button>
 
-<!-- 🚫 ADBLOCK POPUP -->
+<!-- POPUP -->
 <div id="popup">
 <div class="popupBox">
 <h3>⚠ AdBlock Detected</h3>
-<p>Disable AdBlock and refresh</p>
+<p>Disable AdBlock to continue</p>
 <button onclick="refreshPage()">🔄 Refresh</button>
 </div>
 </div>
