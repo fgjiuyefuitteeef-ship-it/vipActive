@@ -96,25 +96,41 @@ function startTimer(){
     },1000);
 }
 
-// 📜 SCROLL
+// 📜 SCROLL FIXED (95% + % method)
 function onScroll(){
     let el=document.getElementById("adArea");
-    if(el.scrollTop + el.clientHeight >= el.scrollHeight){
+
+    let percent=(el.scrollTop + el.clientHeight)/el.scrollHeight*100;
+
+    if(percent > 90){
         scrolled=true;
         checkUnlock();
     }
 }
 
-// 🔓 UNLOCK BUTTON
+// 🔥 BACKUP CHECK (fast scroll fix)
+setInterval(()=>{
+    let el=document.getElementById("adArea");
+    if(!el) return;
+
+    let percent=(el.scrollTop + el.clientHeight)/el.scrollHeight*100;
+
+    if(percent > 90){
+        scrolled=true;
+        checkUnlock();
+    }
+},500);
+
+// 🔓 BUTTON UNLOCK
 function checkUnlock(){
     if(scrolled && timerDone){
         let btn=document.getElementById("btn");
         btn.style.display="block";
-        btn.innerText = (page==5) ? "🎁 Get Link" : "👉 Continue";
+        btn.innerText=(page==5) ? "🎁 Get Link" : "👉 Continue";
     }
 }
 
-// ✅ CHECK ADS ONLY ON CLICK
+// ✅ CHECK ADS ON CLICK ONLY
 function checkAdsBeforeNext(){
 
     let adLoaded=false;
@@ -141,7 +157,6 @@ function checkAdsBeforeNext(){
 // 👉 NEXT
 function next(){
 
-    // पहले ad check
     if(!checkAdsBeforeNext()){
         return;
     }
@@ -197,7 +212,15 @@ SR Killer (Step 1/5)
 <div class="adtext">Sponsored Ad - Click if interested</div>
 </div>
 
-<!-- BANNER ADS -->
+<!-- MULTIPLE BANNERS -->
+<div class="adbox">
+<script>
+atOptions={'key':'4a8a25cd73058be8ffce6a94c4cd32d9','format':'iframe','height':250,'width':300};
+</script>
+<script src="https://www.highperformanceformat.com/4a8a25cd73058be8ffce6a94c4cd32d9/invoke.js"></script>
+<div class="adtext">Advertisement - Support us</div>
+</div>
+
 <div class="adbox">
 <script>
 atOptions={'key':'4a8a25cd73058be8ffce6a94c4cd32d9','format':'iframe','height':250,'width':300};
