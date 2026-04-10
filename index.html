@@ -2,68 +2,151 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Earn Page</title>
+<title>Premium Earn</title>
+
+<style>
+body{
+    margin:0;
+    font-family:sans-serif;
+    background: linear-gradient(135deg,#0f172a,#1e293b);
+    color:white;
+    text-align:center;
+}
+
+.container{
+    padding:20px;
+}
+
+.card{
+    background:#1e293b;
+    margin:15px;
+    padding:15px;
+    border-radius:15px;
+    box-shadow:0 0 10px rgba(0,0,0,0.5);
+}
+
+button{
+    padding:15px 30px;
+    border:none;
+    border-radius:10px;
+    background:#22c55e;
+    color:white;
+    font-size:16px;
+    margin-top:20px;
+}
+
+#adArea{
+    height:400px;
+    overflow-y:scroll;
+}
+</style>
 
 <script>
 let page = 1;
 
-function nextPage() {
+function nextPage(){
     page++;
 
-    if (page <= 5) {
-        document.getElementById("title").innerText = "Step " + page + " / 5";
-        startTimer();
+    document.getElementById("title").innerText="Step "+page+" / 5";
+
+    if(page==5){
+        document.getElementById("btn").innerText="🎁 Claim Reward";
     }
 
-    if (page == 5) {
-        document.getElementById("btn").innerText = "🎁 Claim Reward";
-    }
-}
-
-function startTimer() {
-    let time = 5;
-    let t = setInterval(() => {
-        document.getElementById("timer").innerText = time;
-        time--;
-
-        if (time < 0) {
-            clearInterval(t);
-            document.getElementById("btn").style.display = "block";
-        }
-    }, 1000);
-
-    document.getElementById("btn").style.display = "none";
-}
-
-function clickBtn() {
-
-    // हर page पर ad open
-    window.open("https://www.profitablecpmratenetwork.com/qtaz118cip?key=bbcd12ff8e1634b45ff0af410987c8e0");
-
-    if (page < 5) {
-        nextPage();
-    } else {
-        // FINAL SUCCESS → APP KO SIGNAL
-        window.location.href = "myapp://reward";
-    }
-}
-
-window.onload = function () {
     startTimer();
 }
+
+function startTimer(){
+    let time=5;
+    document.getElementById("btn").style.display="none";
+
+    let t=setInterval(()=>{
+        document.getElementById("timer").innerText=time;
+        time--;
+
+        if(time<0){
+            clearInterval(t);
+            document.getElementById("btn").style.display="block";
+        }
+    },1000);
+}
+
+function clickBtn(){
+
+    // Smart link open
+    window.open("https://www.profitablecpmratenetwork.com/qtaz118cip?key=bbcd12ff8e1634b45ff0af410987c8e0");
+
+    if(page<5){
+        nextPage();
+    }else{
+        // FINAL SIGNAL
+        window.location.href="myapp://reward";
+    }
+}
+
+window.onload=startTimer;
 </script>
 
 </head>
 
-<body style="text-align:center; font-family:sans-serif; padding-top:50px;">
+<body>
+
+<div class="container">
 
 <h2 id="title">Step 1 / 5</h2>
 
 <p>⏳ Wait: <span id="timer">5</span> sec</p>
 
-<button id="btn" onclick="clickBtn()" style="display:none; padding:15px 30px; font-size:16px;">
+<!-- 🔥 SCROLL ADS -->
+<div id="adArea" class="card">
+
+<!-- Banner 1 -->
+<script>
+atOptions = {
+'key' : 'fc0b065f98e1a2233ce6ed3cfff41080',
+'format' : 'iframe',
+'height' : 300,
+'width' : 160,
+'params' : {}
+};
+</script>
+<script src="https://www.highperformanceformat.com/fc0b065f98e1a2233ce6ed3cfff41080/invoke.js"></script>
+
+<br><br>
+
+<!-- Banner 2 -->
+<script>
+atOptions = {
+'key' : 'fc0b065f98e1a2233ce6ed3cfff41080',
+'format' : 'iframe',
+'height' : 300,
+'width' : 160,
+'params' : {}
+};
+</script>
+<script src="https://www.highperformanceformat.com/fc0b065f98e1a2233ce6ed3cfff41080/invoke.js"></script>
+
+<br><br>
+
+<!-- Banner 3 -->
+<script>
+atOptions = {
+'key' : 'fc0b065f98e1a2233ce6ed3cfff41080',
+'format' : 'iframe',
+'height' : 300,
+'width' : 160,
+'params' : {}
+};
+</script>
+<script src="https://www.highperformanceformat.com/fc0b065f98e1a2233ce6ed3cfff41080/invoke.js"></script>
+
+</div>
+
+<button id="btn" onclick="clickBtn()" style="display:none;">
 👉 Continue
 </button>
+
+</div>
 
 </body>
 </html>
